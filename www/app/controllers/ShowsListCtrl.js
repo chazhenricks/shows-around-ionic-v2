@@ -44,6 +44,7 @@ app.controller("ShowsListCtrl", function($scope, LocationFactory, AuthFactory, D
 
     //When user clicks to add show to their tracked list this will grab their firebase uid and attach it to the show object before it adds it to firebase
     $scope.addToTracked = function(show) {
+        console.log("CLICKED ADD TO TRACKED");
         show.uid = AuthFactory.getUser();
         console.log(show);
         console.log(AuthFactory.getUser());

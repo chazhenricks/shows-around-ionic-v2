@@ -67,6 +67,5 @@ app.factory("AuthFactory", function($q, $http, $rootScope, FBCreds) {
 
 
 
-
     return { isAuthenticated, getUser, logout, registerWithEmail, login };
 });

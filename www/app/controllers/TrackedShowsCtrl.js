@@ -11,6 +11,7 @@ app.controller("TrackedShowsCtrl", function($scope, AuthFactory, DataFactory, Sp
 
     //gets a list of users tracked shows from firebase and adds them to the local shows array
     $scope.getTrackedShows = function() {
+        console.log("FUK");
         var user = AuthFactory.getUser();
         console.log("user", user);
         DataFactory.getTrackedShows(user)

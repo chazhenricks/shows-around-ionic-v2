@@ -19,7 +19,7 @@ app.controller("AuthCtrl", function($scope, $window, $rootScope, $location, Auth
         console.log("NO ONE IS LOGGED IN");
         AuthFactory.logout()
             .then(function(data) {
-                $window.location.url = "#!/";
+                $state.go("/");
             }, function(error) {
                 console.log("error occured on logout");
             });
@@ -47,6 +47,7 @@ app.controller("AuthCtrl", function($scope, $window, $rootScope, $location, Auth
 
     // firebase login which redirects to spotify login page
     $scope.login = function() {
+        console.log("I CLICKED LOGIN");
         AuthFactory.login($scope.auth)
             .then(() => {
                 $scope.$apply();
@@ -91,6 +92,6 @@ app.controller("AuthCtrl", function($scope, $window, $rootScope, $location, Auth
         $scope.registerModal.remove();
       });
 
-
+      console.log(AuthFactory.getUser());
 
 });

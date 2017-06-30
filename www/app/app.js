@@ -3,12 +3,13 @@
 var app = angular.module("ShowsAround", ["LocalStorageModule", "spotify", "ionic"]);
 
 //initializes firebase
-app.run(function($rootScope, $location, FBCreds, AuthFactory) {
+app.run(function($rootScope, $location, FBCreds, AuthFactory, $state) {
     firebase.initializeApp(FBCreds);
     $rootScope.isSpotify = false;
 });
 
-app.config(function($stateProvider) {
+
+app.config(function($stateProvider, $urlRouterProvider) {
     // ********
     // ngRoute
     // ********
@@ -19,27 +20,33 @@ app.config(function($stateProvider) {
 
 
     $stateProvider
-        .state('/', {
+        .state('login', {
+            url: "/",
             templateUrl: 'partials/firebaselogin.html',
             controller: 'AuthCtrl'
 
         })
-        .state('setlocation', {
+        .state('login.setlocation', {
+            url: "/setlocation",
             templateUrl: 'partials/setlocation.html',
-            controller: 'NavCtrl',
+            controller: 'NavCtrl'
         })
         .state('spotify', {
+            url: "/spotify",
             templateUrl: 'partials/spotifylogin.html',
-            controller: 'AuthCtrl',
+            controller: 'AuthCtrl'
         })
-        .state('showslist', {
+        .state('login.showslist', {
             templateUrl: 'partials/shows-list.html',
             controller: "ShowsListCtrl",
         })
-        .state('trackedshows', {
+        .state('login.trackedshows', {
             templateUrl: 'partials/trackedshows.html',
             controller: "TrackedShowsCtrl",
         });
+
+        // if none of the above states are matched, use this as the fallback
+        $urlRouterProvider.otherwise('/');
 });
 
 

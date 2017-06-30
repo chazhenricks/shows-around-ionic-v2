@@ -10,6 +10,12 @@ app.controller("NavCtrl", function($scope, $location, AuthFactory, DataFactory, 
         name: ""
     };
 
+
+    $scope.newLocation = {
+        name: ""
+    };
+
+
      $ionicModal.fromTemplateUrl('partials/locationModal.html', {
         scope: $scope,
         animation: 'slide-in-up'
@@ -73,6 +79,14 @@ app.controller("NavCtrl", function($scope, $location, AuthFactory, DataFactory, 
         LocationFactory.newCity($scope.newLocation.city);
         $scope.closeLocationModal();
         $state.go("showslist");
+        $scope.newLocation.city = "";
+    };
+
+        // if user enters new city this will change the city to search by in the Location Factory
+    $scope.loadNewCity = function() {
+        LocationFactory.newCity($scope.newLocation.city);
+        $scope.closeLocationModal();
+        $state.reload();
         $scope.newLocation.city = "";
     };
 
