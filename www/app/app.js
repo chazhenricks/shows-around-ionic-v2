@@ -8,6 +8,21 @@ app.run(function($rootScope, $location, FBCreds, AuthFactory, $state) {
     $rootScope.isSpotify = false;
 });
 
+let isAuth = (AuthFactory) =>
+    new Promise((resolve, reject) => {
+        AuthFactory.isAuthenticated()
+            .then((userExists) => {
+                if (userExists) {
+                    console.log('Authenicated, go ahead');
+                    resolve();
+                } else {
+                    console.log('Authenticated reject, GO AWAY');
+                    reject();
+                }
+            });
+    });
+
+
 
 app.config(function($stateProvider, $urlRouterProvider) {
     // ********
@@ -20,29 +35,33 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
 
     $stateProvider
-        .state('login', {
+        .state('/', {
             url: "/",
             templateUrl: 'partials/firebaselogin.html',
             controller: 'AuthCtrl'
 
         })
-        .state('login.setlocation', {
+        .state('setlocation', {
             url: "/setlocation",
             templateUrl: 'partials/setlocation.html',
-            controller: 'NavCtrl'
+            controller: 'NavCtrl',
+            resolve: { isAuth }
         })
         .state('spotify', {
             url: "/spotify",
             templateUrl: 'partials/spotifylogin.html',
-            controller: 'AuthCtrl'
+            controller: 'AuthCtrl',
+            resolve: { isAuth }
         })
-        .state('login.showslist', {
+        .state('showslist', {
             templateUrl: 'partials/shows-list.html',
             controller: "ShowsListCtrl",
+            resolve: { isAuth }
         })
-        .state('login.trackedshows', {
+        .state('trackedshows', {
             templateUrl: 'partials/trackedshows.html',
             controller: "TrackedShowsCtrl",
+            resolve: { isAuth }
         });
 
         // if none of the above states are matched, use this as the fallback
