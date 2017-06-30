@@ -1,69 +1,9 @@
 <div ng-controller="NavCtrl" class="bar bar-footer">
     <div class="tabs tabs-icon-only">
-        <button class="tab-item" ng-click="openModal()"><i class="icon ion-ios-navigate-outline"></i></button>
-        <a class="tab-item" ng-href="#!/trackedshows "><i class="icon ion-ios-star-outline"></i></a>
-        <a class="tab-item" href="# " ng-click=""><i class="icon ion-ios-search"></i></a>
-        <a class="tab-item" href="# " ng-click="logout() ">Logout</a>
+        <button class="tab-item" ng-click="openLocationModal()"><i class="icon ion-ios-navigate-outline"></i></button>
+        <button class="tab-item" ui-sref="trackedshows"><i class="icon ion-ios-star-outline"></i></button>
+        <button class="tab-item" href="" ng-click="deleteAllModal()"><i class="icon ion-ios-search"></i></button>
+        <button class="tab-item" href="# " ng-click="logout() ">Logout</button>
     </div>
 </div>
 
-<script id="locationModal.html" type="text/ng-template">
-    <ion-modal-view>
-        <ion-header-bar>
-            <h4>Choose Your Location</h4>
-        </ion-header-bar>
-        <ion-content>
-            <input type="text " autofocus="true " placeholder="City Name " ng-model="newLocation.city ">
-            <button ng-click="newCity();" class="center btn waves-effect waves-light blue ">Enter City</button>
-            <p>-OR-</p>
-            <button ng-click="getCurrentLocation() " ng-click="" class="center btn waves-effect waves-light red modal-close " modal>Use Current Location</button>
-        </ion-content>
-    </ion-modal-view>
-</script>
-
-    <!-- LOCATION MODAL -->
-   <!--  <div id="locationModal " class="modal center ">
-        <div class="modal-content ">
-            <h4>Choose Your Location</h4>
-            <input type="text " autofocus="true " placeholder="City Name " ng-model="newLocation.city ">
-            <button ng-click="newCity(); reloadPage() " class="center btn waves-effect waves-light blue ">Enter City</button>
-            <p>-OR-</p>
-            <button ng-click="getCurrentLocation() " data-target="loadingModal " class="center btn waves-effect waves-light red modal-close " modal>Use Current Location</button>
-        </div> -->
-        <!-- end modal-content -->
-       <!--  <div class="modal-footer ">
-            <a href=" " class=" modal-action modal-close waves-effect waves-green btn-flat ">Cancel</a>
-        </div>
-    </div> -->
-    <!-- END LOCATION MODAL -->
-
-
-
-
-
-
-
-
-     <!--    <div ng-if="isSpotify " class="input-field ">
-            <input id="artist-search " type="text " ng-model="newArtist.name " placeholder="Search For Other Artist ">
-            <a href=" " ng-click="getNewArtist() "><i class="material-icons ">search</i></a>
-        </div> -->
-
-
-
-
-
-
-
-<!-- LOADING MODAL -->
-<!-- <div id="loadingModal " class="modal ">
-    <div class="modal-content ">
-        <div class="card ">
-            <div class="card-image ">
-              <img class="flip " src="images/van.gif ">
-              <p class="card-title center ">Arriving At Your City</p>
-            </div>
-        </div>
-    </div>
-</div> -->
-<!-- END LOADING MODAL -->

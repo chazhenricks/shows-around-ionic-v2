@@ -1,0 +1,17 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <h4>Register New User</h4>
+    </ion-header-bar>
+    <ion-content>
+        <input type="text" autofocus="true" placeholder="First Name" ng-model="auth.firstName">
+        <input type="text" autofocus="true" placeholder="Last Name" ng-model="auth.lastName">
+        <input type="email" autofocus="true" placeholder="Email" ng-model="auth.email">
+        <input type="password" autofocus="true" placeholder="Password" ng-model="auth.password">
+        <button ng-click="registerUser()" class="">Register</button>
+        <button ng-click="closeRegisterModal()" class="">Cancel</button>
+    </ion-content>
+</ion-modal-view>
+
+
+
+

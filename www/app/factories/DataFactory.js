@@ -57,7 +57,7 @@ app.factory("DataFactory", function($q, $http, $window, FBCreds, LocationFactory
         return $q((resolve, reject) => {
             $http.get(`https://rest.bandsintown.com/artists/${artist.name}/events?app_id=shows_around`)
                 .then((response) => {
-                    console.log("reponse from getShows", response);
+                    // console.log("reponse from getShows", response);
                     var showsArray = response.data;
                     showsArray.forEach((show) => {
                         if (show.venue.city === city) {
@@ -69,8 +69,8 @@ app.factory("DataFactory", function($q, $http, $window, FBCreds, LocationFactory
                                 artist.tickets = show.offers[0].url;
                             }
                             artist.lat = show.venue.latitude;
-                            artist.long = show.venue.longitude;
-                            console.log("artist from shows array", artist);
+                            // artist.long = show.venue.longitude;
+                            // console.log("artist from shows array", artist);
                             resolve(artist);
                         }
                     });
@@ -172,7 +172,7 @@ app.factory("DataFactory", function($q, $http, $window, FBCreds, LocationFactory
     const getArtistsShows = function(artists) {
         var localShows = [];
         var city = LocationFactory.getCurrentCity();
-        console.log("artistShows city", city);
+        // console.log("artistShows city", city);
         return new Promise((resolve, reject) => {
             $rootScope.localShows = [];
             artists.forEach((item) => {
@@ -251,7 +251,7 @@ app.factory("DataFactory", function($q, $http, $window, FBCreds, LocationFactory
                         response.time = time;
 
                         $rootScope.localShows.push(response);
-                        console.log("localShows", $rootScope.localShows);
+                        // console.log("localShows", $rootScope.localShows);
                     }, (error) => {
                         console.error(error);
                     });

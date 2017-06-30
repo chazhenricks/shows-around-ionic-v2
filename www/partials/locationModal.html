@@ -1,0 +1,12 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <h4>Choose Your Location</h4>
+        <button class="button button-icon ion-ios-close-empty" ng-click="closeLocationModal()"></button>
+    </ion-header-bar>
+    <ion-content>
+        <input type="text" autofocus="true" placeholder="City Name" ng-model="newLocation.city">
+        <button ng-click="newCity();" class="center btn waves-effect waves-light blue ">Enter City</button>
+        <p>-OR-</p>
+        <button ng-click="getCurrentLocation() " ng-click="" class="center btn waves-effect waves-light red modal-close " modal>Use Current Location</button>
+    </ion-content>
+</ion-modal-view>

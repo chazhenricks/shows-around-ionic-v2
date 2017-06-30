@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("NavCtrl", function($scope, $location, AuthFactory, DataFactory, LocationFactory, $timeout, Spotify, $rootScope, $state, $ionicModal) {
+app.controller("NavCtrl", function($scope, $location, AuthFactory, DataFactory, LocationFactory, $timeout, Spotify, $rootScope, $state, $ionicModal, $ionicPopup) {
 
 
     //This determines if a user is logged in to trigger some ng-show elements in the navbar.html partial
@@ -10,31 +10,27 @@ app.controller("NavCtrl", function($scope, $location, AuthFactory, DataFactory, 
         name: ""
     };
 
-     $ionicModal.fromTemplateUrl('locationModal.html', {
+     $ionicModal.fromTemplateUrl('partials/locationModal.html', {
         scope: $scope,
         animation: 'slide-in-up'
       }).then(function(modal) {
-        $scope.modal = modal;
+        $scope.locationModal = modal;
       });
 
-      $scope.openModal = function() {
-        $scope.modal.show();
+      $scope.openLocationModal = function() {
+        console.log("LOG");
+        $scope.locationModal.show();
       };
-      $scope.closeModal = function() {
-        $scope.modal.hide();
+      $scope.closeLocationModal = function() {
+        $scope.locationModal.hide();
       };
       // Cleanup the modal when we're done with it!
       $scope.$on('$destroy', function() {
-        $scope.modal.remove();
+        $scope.locationModal.remove();
       });
-      // Execute action on hide modal
-      $scope.$on('modal.hidden', function() {
-        // Execute action
-      });
-      // Execute action on remove modal
-      $scope.$on('modal.removed', function() {
-        // Execute action
-      });
+
+
+
 
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
@@ -53,7 +49,7 @@ app.controller("NavCtrl", function($scope, $location, AuthFactory, DataFactory, 
         console.log("NO ONE IS LOGGED IN");
         AuthFactory.logout()
             .then(function(data) {
-                $location.path("#!/");
+                $state.go("/");
                 console.log(AuthFactory.getUser());
             }, function(error) {
                 console.log("error occured on logout");
@@ -75,7 +71,7 @@ app.controller("NavCtrl", function($scope, $location, AuthFactory, DataFactory, 
     // if user enters new city this will change the city to search by in the Location Factory
     $scope.newCity = function() {
         LocationFactory.newCity($scope.newLocation.city);
-        $("#locationModal").modal('close');
+        $scope.closeLocationModal();
         $state.go("showslist");
         $scope.newLocation.city = "";
     };

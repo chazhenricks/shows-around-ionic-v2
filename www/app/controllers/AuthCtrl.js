@@ -2,7 +2,7 @@
 
 //login, logout, register
 
-app.controller("AuthCtrl", function($scope, $window, $rootScope, $location, AuthFactory, DataFactory, Spotify, $state) {
+app.controller("AuthCtrl", function($scope, $window, $rootScope, $location, AuthFactory, DataFactory, Spotify, $state, $ionicModal) {
 
     $rootScope.isSpotify = false;
     // scope for registering new users
@@ -26,9 +26,9 @@ app.controller("AuthCtrl", function($scope, $window, $rootScope, $location, Auth
     };
 
     // when first loaded, make sure no one is logged in
-    if (AuthFactory.isAuthenticated()) {
-            $location.url('/spotify');
-        }
+    // if (AuthFactory.isAuthenticated()) {
+    //         $state.go("spotify");
+    //     }
 
     // adding a new user to firebase
     $scope.registerUser = function() {
@@ -38,8 +38,7 @@ app.controller("AuthCtrl", function($scope, $window, $rootScope, $location, Auth
             })
             .then((userData) => {
                 $scope.login();
-                $('#registerModal').modal('close');
-
+                $scope.closeRegisterModal();
             }, (error) => {
                 console.log("Error creating user:", error);
             });
@@ -70,6 +69,28 @@ app.controller("AuthCtrl", function($scope, $window, $rootScope, $location, Auth
     $scope.getAuthToken = () => {
         return $scope.authToken;
     };
+
+
+
+     $ionicModal.fromTemplateUrl('partials/registerModal.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+      }).then(function(modal) {
+        $scope.registerModal = modal;
+      });
+
+      $scope.openRegisterModal = function() {
+        console.log("LOG");
+        $scope.registerModal.show();
+      };
+      $scope.closeRegisterModal = function() {
+        $scope.registerModal.hide();
+      };
+      // Cleanup the modal when we're done with it!
+      $scope.$on('$destroy', function() {
+        $scope.registerModal.remove();
+      });
+
 
 
 });
