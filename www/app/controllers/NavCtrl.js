@@ -16,6 +16,7 @@ app.controller("NavCtrl", function($scope, $location, AuthFactory, DataFactory, 
     };
 
 
+
      $ionicModal.fromTemplateUrl('partials/locationModal.html', {
         scope: $scope,
         animation: 'slide-in-up'
@@ -33,6 +34,26 @@ app.controller("NavCtrl", function($scope, $location, AuthFactory, DataFactory, 
       // Cleanup the modal when we're done with it!
       $scope.$on('$destroy', function() {
         $scope.locationModal.remove();
+      });
+
+
+      $ionicModal.fromTemplateUrl('partials/searchModal.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+      }).then(function(modal) {
+        $scope.searchModal = modal;
+      });
+
+      $scope.openSearchModal = function() {
+        console.log("LOG");
+        $scope.searchModal.show();
+      };
+      $scope.closeSearchModal = function() {
+        $scope.searchModal.hide();
+      };
+      // Cleanup the modal when we're done with it!
+      $scope.$on('$destroy', function() {
+        $scope.searchModal.remove();
       });
 
 

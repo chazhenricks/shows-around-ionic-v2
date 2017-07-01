@@ -1,14 +1,12 @@
 
-<ion-modal-view>
-    <ion-header-bar>
-        <h4>Choose Your Location</h4>
-        <button class="button button-icon ion-ios-close-empty" ng-click="closeLocationModal()"></button>
+<ion-modal-view class="locationModal-container">
+    <ion-header-bar class="locationModal-header-bar">
+        <h4 class="locationModal-header">Choose Your Location</h4>
+        <button class="button button-icon ion-ios-close-empty locationModal-close-btn" ng-click="closeLocationModal()"></button>
     </ion-header-bar>
-    <ion-content>
-        <input type="text" autofocus="true" placeholder="City Name" ng-model="newLocation.city">
-        <button ng-click="$parent.loadNewCity()" class="">Enter City</button>
-        <p>-OR-</p>
-        <button ng-click="$parent.getCurrentLocation()" ng-click="" class="center btn waves-effect waves-light red modal-close " modal>Use Current Location</button>
+    <ion-content class="locationModal-content">
+        <input class="locationModal-city-input" type="text" autofocus="true" placeholder="City Name" ng-model="newLocation.city">
+        <button ng-click="$parent.loadNewCity()" class="locationModal-entercity-btn">Enter City</button>
     </ion-content>
 </ion-modal-view>
 

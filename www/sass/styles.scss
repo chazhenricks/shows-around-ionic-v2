@@ -22,17 +22,104 @@ LOGIN
     width: 75%;
     border-bottom: 1px solid black ;
 }
+.login-btn{
+    margin-top: 10px;
+}
 
 .login-btn,
 .login-register-btn{
     border: none;
-    background-color: $spotify-color;
-    padding: 0.5em 2em;
+    background-color: $not-white;
+    padding: 0.25em 1.5em;
     font-size: 1.25em;
-    color: white;
+    color: $dark-grey;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
     border-radius: 2px;
+}
 
+.login-or{
+    margin-top: 10px;
+}
+
+/***************
+SPOTIFY
+***************/
+
+.spotify-div{
+    padding: 1em 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.spotify-header,
+.spotify-content{
+    text-align: center;
+}
+
+.spotify-btn{
+    background-color: $spotify-color;
+    border: none;
+    padding: 0.25em 1.5em;
+    font-size: 1.25em;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+    color: white;
+}
+
+/***************
+SET LOCATION
+***************/
+
+.setlocation-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.setlocation-enter-btn{
+    margin-top: 10px;
+}
+
+.setlocation-enter-btn,
+.setlocation-currentlocation-btn,
+.locationModal-entercity-btn,
+.locationModal-useCurrentCity-btn{
+    border: none;
+    background-color: $not-white;
+    padding: 0.25em 1.5em;
+    font-size: 1.25em;
+    color: $dark-grey;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+}
+
+.setlocation-or{
+    margin-top: 10px;
+}
+
+/***************
+Location Modal
+***************/
+
+.locationModal-header-bar{
+    display: flex;
+    justify-content: space-between;
+}
+
+.locationModal-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.locationModal-entercity-btn{
+    margin-top: 10px;
+}
+.locationModal-or{
+    margin-top: 10px;
 }
 
 /***************
