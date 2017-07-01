@@ -1,17 +1,8 @@
-<div class="container center">
-    <section>
-        <h3>Welcome To Shows Around</h3>
-        <div>
-            <input type="email" autofocus="true" placeholder="Email" ng-model="auth.email">
-        </div>
-        <div>
-            <input type="password" placeholder="Password" ng-model="auth.password">
-        </div>
-        <div>
-            <button ng-click="login()" class="">Login</button>
-            <p>OR</p>
-            <button class="" ng-click="openRegisterModal()">Register</button>
-        </div>
-    </section>
-</div> <!-- end container -->
-
+<section class="login-div">
+    <h3 class="login-header">Welcome To Shows Around</h3>
+    <input class="login-email" type="email" autofocus="true" placeholder="Email" ng-model="auth.email">
+    <input class="login-password" type="password" placeholder="Password" ng-model="auth.password">
+    <button class="login-btn" ng-click="login()">Login</button>
+    <p>OR</p>
+    <button class="login-register-btn" ng-click="openRegisterModal()">Register</button>
+</section>
